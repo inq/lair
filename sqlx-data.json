@@ -1,0 +1,27 @@
+{
+  "db": "PostgreSQL",
+  "410f3141edc51c3980f0947f8c1d89d9cc3c8c589bf1ef3397a9d2b90b660e10": {
+    "describe": {
+      "columns": [
+        {
+          "name": "id",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "name",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "Left": []
+      }
+    },
+    "query": "SELECT * FROM images"
+  }
+}

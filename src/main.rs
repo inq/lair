@@ -2,6 +2,7 @@ use std::io::Cursor;
 
 use actix_multipart::Multipart;
 use actix_web::{http::StatusCode, HttpRequest, HttpResponse};
+use sqlx::postgres::PgPoolOptions;
 
 async fn upload(mut payload: Multipart) -> Result<HttpResponse, actix_web::Error> {
     use futures::StreamExt;
@@ -42,8 +43,23 @@ async fn index(req: HttpRequest) -> Result<HttpResponse, actix_web::Error> {
         ))
 }
 
+#[derive(Debug)]
+struct Image {
+    id: uuid::Uuid,
+    name: Option<String>,
+}
+
 async fn main_async() -> Result<(), Error> {
     use actix_web::{App, HttpServer};
+
+    let pool = PgPoolOptions::new()
+        .max_connections(5)
+        .connect("postgres:///lair?host=/tmp")
+        .await.unwrap();
+
+    let images = sqlx::query_as!(Image, "SELECT * FROM images").fetch_all(&pool).await.unwrap();
+
+    println!("{:#?}", images);
 
     HttpServer::new(move || {
         App::new()
