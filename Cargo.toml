@@ -1,0 +1,14 @@
+[package]
+name = "lair"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", features = ["rt", "net", "sync"] }
+hyper = { version = "1", features = ["server", "http1"] }
+tracing = { version = "0.1" }
+tracing-subscriber = { version = "0.3", features = ["fmt"] }
+pin-project-lite = "0.2"
+http-body-util = "0.1"
+tower-http = { version = "0.5", features = ["fs"] }
+tower-service = "0.3"

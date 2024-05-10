@@ -1,0 +1,156 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>INKYU</title>
+    <style>
+        @font-face {
+            /* https://fonts.google.com/specimen/Fjalla+One */
+            font-family: Fjalla-One;
+            src: url('/assets/fjalla-one.woff2') format('woff2');
+        }
+        @font-face {
+            /* https://github.com/moonspam/NanumBarunGothic */
+            font-family: Nanum;
+            src: url('/assets/nanum.woff2') format('woff2');
+        }
+        :root {
+            --backgroud-color: #eee;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: Nanum;
+            background-color: var(--backgroud-color);
+        }
+        header {
+            font-family: Fjalla-One;
+            font-size: 2.5em;
+            color: #333;
+            background-color: var(--backgroud-color);
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-top: 2pt;
+            text-align: center;
+        }
+        .title {
+            font-size: 1.2em;
+            margin: 0.2em;
+        }
+        svg.icon {
+            width: 24px;
+            height: 24px;
+        }
+        svg.icon:hover {
+            filter:opacity(70%);
+        }
+        .articles {
+            max-width: 900px;
+            background-color: #fff;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            border-top: 3px solid #333;
+            border-bottom: 3px solid #333;
+            margin: 0 auto;
+        }
+        article {
+            max-width: 1024px;
+            line-height: 2.0em;
+            font-size: 0.9em;
+            margin: 2em auto;
+            padding-left: 1em;
+            border-left: 8px solid #ddd;
+        }
+        article h2 {
+            margin: 0 auto 1em auto;
+            font-size: 1.5em;
+            font-weight: normal;
+        }
+        article span.created-at {
+            font-size: 0.6em;
+            color: #666;
+        }
+        footer {
+            display: flex;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyBjbGFzcz0id2F2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMTAwIDUwIj4KPHBhdGggc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjAuMTgiIGZpbGw9IiNmZmY0IiBkPSJNLTQuNjksMTAuMDAgcTguOTcgLTguOTcsMTcuOTUgMCBxNy44NCA3Ljg0LDE1LjY3IDAgcTYuMjkgLTYuMjksMTIuNTggMCBxOC41MSA4LjUxLDE3LjAxIDAgcTcuMjMgLTcuMjMsMTQuNDUgMCBxNi45OCA2Ljk4LDEzLjk3IDAgcTguMzYgLTguMzYsMTYuNzIgMCBxNy45NyA3Ljk3LDE1Ljk0IDAgTDExMCwxMC4wMFY2MEgtMTBaIi8+CjxwYXRoIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIwLjE5IiBmaWxsPSIjZGRlNCIgZD0iTS04LjA2LDEyLjAwIHE2LjY2IC02LjY2LDEzLjMzIDAgcTcuNzggNy43OCwxNS41NSAwIHE4LjM0IC04LjM0LDE2LjY4IDAgcTcuNDQgNy40NCwxNC44OSAwIHE2LjQ2IC02LjQ2LDEyLjkxIDAgcTYuMjggNi4yOCwxMi41NyAwIHE2LjUxIC02LjUxLDEzLjAzIDAgcTguNjcgOC42NywxNy4zNSAwIHE2LjA3IC02LjA3LDEyLjEzIDAgTDExMCwxMi4wMFY2MEgtMTBaIi8+CjxwYXRoIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIwLjEzIiBmaWxsPSIjZmZmNCIgZD0iTS03LjM4LDE0LjAwIHE2LjQ2IC02LjQ2LDEyLjkyIDAgcTcuNDEgNy40MSwxNC44MiAwIHE2Ljk4IC02Ljk4LDEzLjk1IDAgcTYuNjMgNi42MywxMy4yNiAwIHE4Ljc0IC04Ljc0LDE3LjQ5IDAgcTguODAgOC44MCwxNy42MCAwIHE3LjI0IC03LjI0LDE0LjQ5IDAgcTcuNDkgNy40OSwxNC45NyAwIHE4LjAyIC04LjAyLDE2LjA0IDAgTDExMCwxNC4wMFY2MEgtMTBaIi8+CjxwYXRoIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIwLjI3IiBmaWxsPSIjZGRlNCIgZD0iTS04LjcwLDE2LjAwIHE4Ljc2IC04Ljc2LDE3LjUyIDAgcTYuODQgNi44NCwxMy42NyAwIHE3Ljg3IC03Ljg3LDE1Ljc0IDAgcTguNDcgOC40NywxNi45MyAwIHE2LjI4IC02LjI4LDEyLjU1IDAgcTcuNzkgNy43OSwxNS41OCAwIHE2LjM1IC02LjM1LDEyLjcwIDAgcTcuNjcgNy42NywxNS4zMyAwIEwxMTAsMTYuMDBWNjBILTEwWiIvPgo8cGF0aCBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMC4zMSIgZmlsbD0iI2ZmZjQiIGQ9Ik0tOS45NCwxOC4wMCBxNy40MCAtNy40MCwxNC44MCAwIHE2Ljk2IDYuOTYsMTMuOTIgMCBxNi42MyAtNi42MywxMy4yNSAwIHE4LjE1IDguMTUsMTYuMzEgMCBxNy4yNSAtNy4yNSwxNC41MSAwIHE2LjA4IDYuMDgsMTIuMTUgMCBxNi40OCAtNi40OCwxMi45NiAwIHE3LjUyIDcuNTIsMTUuMDQgMCBxNy4yNyAtNy4yNywxNC41NSAwIEwxMTAsMTguMDBWNjBILTEwWiIvPgo8cGF0aCBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMC4xMyIgZmlsbD0iI2RkZTQiIGQ9Ik0tOS40MCwyMC4wMCBxOC4wMCAtOC4wMCwxNi4wMCAwIHE2LjI1IDYuMjUsMTIuNTAgMCBxNy4yNyAtNy4yNywxNC41NCAwIHE3LjMyIDcuMzIsMTQuNjQgMCBxNi45NCAtNi45NCwxMy44OCAwIHE2LjQwIDYuNDAsMTIuODEgMCBxOC43NyAtOC43NywxNy41NCAwIHE4Ljg0IDguODQsMTcuNjcgMCBxOC4zNyAtOC4zNywxNi43NCAwIEwxMTAsMjAuMDBWNjBILTEwWiIvPgo8cGF0aCBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMC4xMiIgZmlsbD0iI2ZmZjQiIGQ9Ik0tNC4xOCwyMi4wMCBxOC45MCAtOC45MCwxNy43OSAwIHE2LjA1IDYuMDUsMTIuMDkgMCBxNy40NiAtNy40NiwxNC45MiAwIHE2Ljg3IDYuODcsMTMuNzQgMCBxNi40NCAtNi40NCwxMi44OSAwIHE3LjEzIDcuMTMsMTQuMjYgMCBxOC41MSAtOC41MSwxNy4wMiAwIHE4LjYzIDguNjMsMTcuMjYgMCBxOC4yNyAtOC4yNywxNi41NSAwIEwxMTAsMjIuMDBWNjBILTEwWiIvPgo8cGF0aCBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMC4yMiIgZmlsbD0iI2RkZTQiIGQ9Ik0tNS41NiwyNC4wMCBxNy4xOSAtNy4xOSwxNC4zOCAwIHE2LjQ5IDYuNDksMTIuOTggMCBxNy4yNSAtNy4yNSwxNC41MCAwIHE2LjEzIDYuMTMsMTIuMjUgMCBxNy45NyAtNy45NywxNS45NCAwIHE4LjI1IDguMjUsMTYuNTAgMCBxNy4zNiAtNy4zNiwxNC43MiAwIHE3LjM2IDcuMzYsMTQuNzEgMCBxNi4wOSAtNi4wOSwxMi4xNyAwIEwxMTAsMjQuMDBWNjBILTEwWiIvPgo8cGF0aCBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMC4xMiIgZmlsbD0iI2ZmZjQiIGQ9Ik0tNy4zMiwyNi4wMCBxNi44NSAtNi44NSwxMy43MSAwIHE2LjczIDYuNzMsMTMuNDcgMCBxNi42NSAtNi42NSwxMy4zMSAwIHE3LjY3IDcuNjcsMTUuMzQgMCBxNi45NSAtNi45NSwxMy45MCAwIHE3LjE2IDcuMTYsMTQuMzMgMCBxNi4yMSAtNi4yMSwxMi40MyAwIHE3LjI4IDcuMjgsMTQuNTYgMCBxNy4xNiAtNy4xNiwxNC4zMSAwIEwxMTAsMjYuMDBWNjBILTEwWiIvPgo8cGF0aCBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMC4zNyIgZmlsbD0iI2RkZTQiIGQ9Ik0tOS4yMCwyOC4wMCBxOC44NCAtOC44NCwxNy42OCAwIHE4LjgxIDguODEsMTcuNjIgMCBxOC45NiAtOC45NiwxNy45MiAwIHE2LjE3IDYuMTcsMTIuMzUgMCBxNi4wMSAtNi4wMSwxMi4wMiAwIHE3LjE0IDcuMTQsMTQuMjcgMCBxNi4xMSAtNi4xMSwxMi4yMiAwIHE2LjQ3IDYuNDcsMTIuOTMgMCBxNi41NCAtNi41NCwxMy4wOCAwIEwxMTAsMjguMDBWNjBILTEwWiIvPgo8L3N2Zz4=");
+            background-size: 100%;
+
+            width: 100%;
+            aspect-ratio: 100 / 50;
+        }
+        footer p {
+            display: block;
+            font-size: 0.8em;
+            width: 100%;
+            align-self: flex-end;
+            text-align: right;
+        }
+    </style>
+    <svg style="display:none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <symbol id="logo-icon" viewBox="0 0 100 100">
+                <path fill="#333" d="M4.6 5.5c1.5 20 4 38.6 7.3 56.3 1.1 2.6 2.2 4.8 3.5 6.5-.4 0-.2 17.4.6 26.4.5 1.6 1.9 2.6 4 2.9 5.7 0 11.3.4 17 1.2 10.2-.7 20.4-1 30.6-.4 4.9-.9 9.8-1.4 14.7-1.3 2.4-.5 3.8-1.2 4.2-2.3.6-9 .9-18.1.8-27.1 1.1-1.9 2-4.2 2.9-7.6 3.1-17.5 5.3-35.8 7-54.7.1-3-1.4-2.8-5.4-3.3C57 .5 43.5.6 10.2 2.7 6.4 3 4.7 3.9 4.5 5.5z"/>
+                <path fill="#dfe8ef" d="M9.6 6.1c-.6-1.5.2-2.2 1.8-2.4 27.1-.8 54-.8 80.9 0 .9 0 1.1.9.6 2.4-2.6 18.4-5.9 37.4-9.6 57.1-.5 2.4-1.9 4-4 5.1-18.8 2.3-37.2 2.4-55.3.6-2.3-1.9-4.2-4.2-5.3-7.2C14.8 43.6 11.8 25 9.5 6.2zm14 64.3c14.1.8 26 2 55.6-.5.5 1.2-2.3 5.7-5.3 5.6-2.3 0-8 1.4-9.9 2-6.9-.6-24.9-.5-26.4 0-3-.8-6.2-1.3-9.5-1.6-2.5-1-4.1-2.8-4.5-5.5zm-5.5 7.5c5.5 1.8 12.1 2.5 19.1 2.6 9.9-.5 19.5-.5 29 .2 5.2.2 14.8-1.4 18-4.1.2 7-.4 11.1-1.9 17.9 0-.6-8.9.3-13.4 1.6-.3-6.5-.9-10.1-1.4-13.6l-1.1 13.1c-9.3-.1-18.5 0-27.8.4-.6-5-1-9.5-1.3-13.8-.9 3.6-1.5 7.8-1.6 13.8-5.1-1-15.3-1.4-15.3-1.1-1.7-4.3-2.2-10.4-2.4-17.1z"/>
+                <path fill="#fff" d="M11.4 7.8h18.9l7.6 60.8-13.7-1-4.6-7-8.2-52.8zm26.5 64.4l-.2 3.9-10.3-.4-2.3-4.2 12.8.7zm-18.3 7.5L36 81.6l-1.2 13.3-13.5-1-1.7-14.2z"/>
+                <path fill="#333" d="M87.5,5.8c-23.2-1.8-47-1.7-72.9,0h72.9Z"/>
+            </symbol>
+            <symbol id="github-icon" viewBox="0 0 24 24">
+                <path fill="#333" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </symbol>
+            <symbol id="linkedin-icon" viewBox="0 0 24 24">
+                <path fill="#333" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </symbol>
+            <symbol id="instagram-icon" viewBox="0 0 24 24">
+                <path fill="#333" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </symbol>
+        </defs>
+    </svg>
+</head>
+
+<body>
+    <header>
+        <svg><use href="#logo-icon"/></svg>
+        <p class="title">
+            INKYU
+            <span class="shortcuts">
+                <a href="https://github.com/inq"><svg class="icon"><use href="#github-icon"/></svg></a>
+                <a href="https://linkedin.com/in/gofiri"><svg class="icon"><use href="#linkedin-icon"/></svg></a>
+                <a href="https://instagram.com/gofiri"><svg class="icon"><use href="#instagram-icon"/></svg></a>
+            </span>
+        </p>
+    </header>
+
+    <div class="articles">
+        <article>
+            <h2>
+                제1단 춘향과 이도령
+                <span class="created-at">
+                    May 10, 2024
+                </span>
+            </h2>
+            <p>숙종대왕 즉위 초에 성덕이 넙우시사 성자성손은 계계승승하사 금고옥적은 요순시절이요, 의관문물은 우탕의 버금이라. 좌우보필은 주석지신이요, 용양호위는 간성지장이라. 조정에 흐르는 덕화 향곡(곡)에 패엿시니 사해굳은 기운이 원근에 어려잇다. 충신은 만조하고 효자열녀 가가재라. 미재미재라 우순풍조하니 함포고복 백성들은 처처에 격양가라.</p>
+            <p>이때 전라도 남원부에 월매라 하는 기생이 잇스되, 삼남의 명기로서 일직 퇴기하야 성가라 하는 양반을 다리고 세월을 보내되 연장사순에 당하야 일점혈육이 업서 일로 한이 되야 장탄수심에 병이 되것구나. 일일은 크게 깨쳐 옛사람을 생각하고 가군을 청입하야 여짜오되 공순이 하는 말이,</p>
+            <p>“전생에 무삼 은혜 찌쳣던지 이생에 부부되야 창기행실 다 바리고 예모도 숭상하고 여공도 심슷건만 무삼 죄가 진중하야 일점혈육 업섯스니 육친무족 우리 신세 선영향화(화) 뉘라 하며 사후감장 어이하리. 명산대찰에 신고이나 하야 남녀간 나커드면 평생한을 풀 것이니 가군의 뜻이 어떠하오.”</p>
+            <p>성참판하는 말이,</p>
+            <p>“일생신세 생각하면 자네 말이 당연하나 빌어서 자식을 나흘진대 무자할 사람이 잇스리요.”</p>
+            <p>하니, 월매 대답하되,</p>
+            <p>“천하대성 공부자도 니구산에 빌으시고, 정나라 정자산은 우성산에 빌어 나계시고, 아동방강산을 이를진댄 명산대천이 업슬손가. 경상도 웅천 주천의는 늙도록 자녀업서 최고봉에 빌엇더니 대명천자 나계시사 대명천지 밝엇스니 우리도 정성이나 듸려보사이다. 공든 탑이 무너지며, 심근 남기 껙길손가.”</p>
+            <p>이날부텀 목욕재계 졍이하고 명산승지 찾아갈제 오작교 썩 나서서 좌우산천 둘러보니, 서북의 교룡산은 술해방을 막아잇고, 동으로는 장림수풀 깊은 고대 선원사는 은은이 보이고, 남으로는 지리산이 웅장한대 그 가온데 료천수는 일대장강벽파되야 동남으로 둘럿스니 별유건곤 여긔로다. 청림을 더우잡고 산수를 밟아 들어가니 지리산이 여긔로다. 반야봉 올랏서서 사면을 둘러보니 명산대천 완연하다. 상봉에 단을 두어 제물을 진설하고 단하에 복지하야 천신만고 빌엇더니 산신님의 덕이신지 이때는 오월오일갑자라. 한꿈을 얻으니 서기 반공하고 오채영롱하더니 일위선녀 청학을 타고 오는듸 머리에 화관이요, 몸에는 채의로다. 월패 소래 쟁쟁하고 손에는 계화일지를 들고 당에 오르며 거수장읍하고 공순이 여짜오대,</p>
+            <p>“낙포의 딸일너니 번도진상 옥경갓다 광한전에서 적송자 만나 미진정회하올차에 시만함이 죄가 되야 상제 대노하사 진토에 내치시매 갈바를 몰랏더니 두류산신령께서 부인댁으로 지시하기로 왓사오니 어엽비 여기소서.”</p>
+            <p>하며 품으로 달려들새, 학지고성은 장경고라, 학의 소래 놀래깨니 남가일몽이다. 황홀한 정신을 진정하야 가군과 몽사를 설화하고 천행으로 남자를 나을까 기다리더니, 과연 그달부텀 태기잇서 십삭이 당하매 일일은 향기만실하고 채운이 영롱하더니 혼미중에 생산하니 옥녀를 나앗나니, 월매의 일구월심 기루던 마음 남자는 못낫스되 적은듯 풀리는구나. 그 사랑함은 엇지 다 형언하리. 일흠을 춘향이라 부르면서 장중보옥같이 길러내니 효행(회)이 무쌍이요, 인자함이 기린이라. 칠팔세되매 서책에 착미하야 예모정절을 일삼으니 효행을 일읍이 칭송 아니할 이 업더라.</p>
+            <p>이때 삼청동 이한림이라 하는 양반이 잇스되 세대명가요, 충신의 후예라. 일일은 전하옵께옵서 충효록을 올려보시고 충효자를 자목지관 임용하실새, 이한림으로 과천현감에 금산군수 이배하야 남원부사 제수하시니 이한림이 사은숙배 하직하고 치행차려 남원부에 도임하여 선치민정하니 사방에 일이 업고 방곡의 백성들은 더듸옴을 칭송한다. 강구연월문동요라 시화연풍하고 백성이 효도하니 요순시절이라.</p>
+            <p>이때는 어느 때뇨. 놀기조흔 삼춘이라. 호연비조 뭇새들은 농초화답 짝을 지어 쌍거쌍래 날아들어 온갖 춘정 다토는듸 남산화발북산홍과 천사만사수양지에 황금조는 벗부른다. 나무나무 성림하고 두견접동 낮이 나니 일년지가절이라.</p>
+            <p>이때 사도자제 이도령이 년광은 이팔이요 풍채는 두목지라. 도량은 창해같고 지혜 활달하고 문장은 이백이요 필법은 왕희지라. 일일은 방자를 불러 말삼하되,</p>
+            <p>“이곳 경처 어데매냐 시흥춘흥 도도하니 절승경처 말하여라.”</p>
+            <p>방자놈 여짜오되,</p>
+            <p>“공부하시는 도령님이 경처찾어 부질업소.”</p>
+            <p>이도령 이른 말이,</p>
+            <p>“너 무식한 말이로다. 자고로 문장재사도 절승강산 구경키는 풍월작문 근본이라. 신선도 두로놀아 박람하니 어이하야 부당하랴. 사마장경이 남으로 강호에 떳다 대강을 거사릴제 광랑성파에 음풍이 노호하야 예로부터 가르치니 천지간 만물지변이 놀랍고 질겁고도 고흔 것이 글 아닌게 업느니라. 시중천자 이태백은 채석강에 놀아잇고, 적벽강 추야월에 소동파 놀아잇고, 심양강 명월야에 백낙천 놀아잇고, 보은속리 운장대에 세종대왕 노셧스니, 아니노든 못하리라.”</p>
+        </article>
+
+        <footer>
+            <p>© 2024 inkyu. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
