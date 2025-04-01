@@ -4,11 +4,15 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-tokio = { version = "1", features = ["rt", "net", "sync"] }
-hyper = { version = "1", features = ["server", "http1"] }
+monoio = { version = "0.2.2", features = ["macros"] }
 tracing = { version = "0.1" }
-tracing-subscriber = { version = "0.3", features = ["fmt"] }
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
 pin-project-lite = "0.2"
-http-body-util = "0.1"
-tower-http = { version = "0.5", features = ["fs"] }
-tower-service = "0.3"
+bytes = "1.5.0"
+http = "1.0.0"
+httparse = "1.8.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_urlencoded = "0.7"
+futures = "0.3.30"
+sark = "0.1"
