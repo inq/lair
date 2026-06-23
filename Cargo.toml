@@ -4,15 +4,23 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-monoio = { version = "0.2.2", features = ["macros"] }
-tracing = { version = "0.1" }
-tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
-pin-project-lite = "0.2"
-bytes = "1.5.0"
-http = "1.0.0"
-httparse = "1.8.0"
+# dope: the manifold runtime (replaces monoio)
+dope = "0.3"
+o3 = "0.1"
+
+# sark: the L7 layer for dope
+sark = { path = "../sark/sark" }
+sark-core = { path = "../sark/core" }
+sark-gen = { path = "../sark/gen" }
+
+# templating + content
+tent = { path = "../tent" }
+http = "1"
 serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-serde_urlencoded = "0.7"
-futures = "0.3.30"
-sark = "0.1"
+serde_yaml = "0.9"
+
+# cli + observability
+clap = { version = "4", features = ["derive"] }
+thiserror = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }

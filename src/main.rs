@@ -1,17 +1,13 @@
-extern crate dope;
-
 use clap::Parser;
 use dope::launcher::Launcher;
 use sark::{Build, ServerCfg};
-use tracing_subscriber::{self, EnvFilter};
+use tracing_subscriber::EnvFilter;
 
 mod config;
 mod lair;
 
 #[derive(Debug, thiserror::Error)]
 enum Error {
-    #[error("lair requires explicit --cpus with at least one core")]
-    MissingCpus,
     #[error("invalid bind address: {0}")]
     BindAddr(#[from] std::net::AddrParseError),
     #[error("cpu id out of u16 range: {0}")]
@@ -31,21 +27,30 @@ fn main() -> Result<(), Error> {
         .with_writer(std::io::stderr)
         .init();
 
-    tracing::info!("lair starting");
+    // Thread-per-core: one pinned worker per CPU, all sharing the bind port via
+    // SO_REUSEPORT (enabled by Build::http). Honour an explicit --cpus list,
+    // otherwise bind every CPU the process is allowed to run on.
+    let cpus = match config.cpus {
+        Some(cpus) => cpus
+            .into_iter()
+            .map(u16::try_from)
+            .collect::<Result<Vec<_>, _>>()?,
+        None => Launcher::allowed_cpus(),
+    };
 
-    let core = config
-        .cpus
-        .and_then(|mut cpus| cpus.drain(..).next())
-        .ok_or(Error::MissingCpus)?;
     let cfg = ServerCfg {
         bind: config.bind.parse()?,
         max_conn: 1024,
         backlog: 4096,
     };
-    let cpu = u16::try_from(core)?;
-    Launcher::new(vec![cpu]).run(move |ctx| {
-        let lair_state: &'static lair::State = Box::leak(Box::new(lair::State::new()));
-        Build::http(lair::lair::new(lair_state), cfg.clone(), ctx, None)
+
+    tracing::info!(?cpus, bind = %cfg.bind, "lair starting");
+
+    Launcher::new(cpus).run(move |ctx| {
+        // Each core owns its State: a per-core visit counter and asset pointers,
+        // so there is no cross-core sharing and no atomics on the hot path.
+        let state: &'static lair::State = Box::leak(Box::new(lair::State::new()));
+        Build::http(lair::lair::new(state), cfg.clone(), ctx, None)
     })?;
     Ok(())
 }
