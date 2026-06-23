@@ -1,0 +1,120 @@
+@font-face {
+    /* https://fonts.google.com/specimen/Fjalla+One */
+    font-family: Fjalla-One;
+    src: url('/assets/fjalla-one.woff2') format('woff2');
+}
+@font-face {
+    /* https://github.com/moonspam/NanumBarunGothic */
+    font-family: Nanum;
+    src: url('/assets/nanum.woff2') format('woff2');
+}
+:root {
+    --backgroud-color: #eee;
+}
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Nanum;
+    background-color: var(--backgroud-color);
+}
+header {
+    font-family: Fjalla-One;
+    font-size: 2.5em;
+    color: #333;
+    background-size: 100%;
+    background-color: var(--backgroud-color);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 2pt;
+    text-align: center;
+}
+.title {
+    font-size: 1.2em;
+    margin: 0.2em;
+}
+svg.icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 4px;
+}
+svg.icon:hover {
+    filter:opacity(70%);
+}
+.articles {
+    max-width: 900px;
+    position: relative;
+    border-top: 3px solid #333;
+    border-bottom: 3px solid #333;
+    margin: 0 auto;
+    padding-bottom: 500px;
+}
+article {
+    position: relative;
+    z-index: 1;
+    max-width: 1024px;
+    line-height: 2.0em;
+    font-size: 0.9em;
+    margin: 2em auto;
+    padding-left: 1em;
+    border-left: 8px solid #ddd;
+}
+article h2 {
+    margin: 0 auto 1em auto;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+article span.created-at {
+    font-size: 0.6em;
+    color: #666;
+}
+footer {
+    position: relative;
+    z-index: 1;
+    padding: 0.5em;
+}
+.waves {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
+}
+.waves svg.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 50%;
+}
+@keyframes w0 { to { transform: translateX(-0.05%); } }
+@keyframes w1 { to { transform: translateX(-0.15%); } }
+@keyframes w2 { to { transform: translateX(-0.3%); } }
+@keyframes w3 { to { transform: translateX(-0.6%); } }
+@keyframes w4 { to { transform: translateX(-1%); } }
+@keyframes w5 { to { transform: translateX(-1.6%); } }
+@keyframes w6 { to { transform: translateX(-2.5%); } }
+@keyframes w7 { to { transform: translateX(-3.8%); } }
+@keyframes w8 { to { transform: translateX(-5.5%); } }
+@keyframes w9 { to { transform: translateX(-8%); } }
+.waves svg.wave {
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-timeline: scroll(root);
+    animation-fill-mode: both;
+}
+.wave-0 { animation-name: w0; }
+.wave-1 { animation-name: w1; animation-direction: reverse; }
+.wave-2 { animation-name: w2; }
+.wave-3 { animation-name: w3; animation-direction: reverse; }
+.wave-4 { animation-name: w4; }
+.wave-5 { animation-name: w5; animation-direction: reverse; }
+.wave-6 { animation-name: w6; }
+.wave-7 { animation-name: w7; animation-direction: reverse; }
+.wave-8 { animation-name: w8; }
+.wave-9 { animation-name: w9; animation-direction: reverse; }
+footer p {
+    font-size: 0.8em;
+    text-align: right;
+}

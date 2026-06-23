@@ -1,0 +1,35 @@
+html
+    head
+        meta charset="utf-8"
+        meta name="viewport" content="width=device-width, initial-scale=1.0"
+        title "INKYU"
+        style !{css}
+        !{svg_defs}
+    body
+        header
+            svg
+                use href="#logo-icon"
+            p.title
+                "INKYU "
+                span.shortcuts
+                    a href="https://github.com/inq"
+                        svg.icon
+                            use href="#github-icon"
+                    a href="https://linkedin.com/in/gofiri"
+                        svg.icon
+                            use href="#linkedin-icon"
+                    a href="https://instagram.com/gofiri"
+                        svg.icon
+                            use href="#instagram-icon"
+        div.articles
+            div.waves
+                !{wave_svg}
+            - for entry in &articles
+                article
+                    h2
+                        {entry.title}
+                        span class="created-at" {entry.created_at}
+                    - for para in &entry.paragraphs
+                        p {para}
+            footer
+                p "© 2024 inkyu. All rights reserved."
