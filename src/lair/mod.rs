@@ -70,12 +70,13 @@ impl Wave {
             let vw = period * 2.0;
             let _ = writeln!(
                 out,
-                "<svg class=\"wave wave-{}\" xmlns=\"http://www.w3.org/2000/svg\" \
+                "<svg class=\"wave wave-{}\" style=\"--wv:{:.2}\" xmlns=\"http://www.w3.org/2000/svg\" \
                  viewBox=\"0 0 {:.2} 50\" preserveAspectRatio=\"none\">\
                  <path fill=\"{}\" d=\"M0,{:.2}{beziers}{beziers} L{:.2},{:.2}V50H0Z\"/>\
                  <path fill=\"none\" stroke=\"#333{}\" stroke-width=\"{:.2}\" d=\"M0,{:.2}{beziers}{beziers}\"/>\
                  </svg>",
                 i,
+                vw,
                 vw,
                 fill,
                 y,

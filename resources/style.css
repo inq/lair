@@ -44,6 +44,7 @@ svg.icon:hover {
 .articles {
     max-width: 900px;
     position: relative;
+    background-color: #fff;
     border-top: 3px solid #333;
     border-bottom: 3px solid #333;
     margin: 0 auto;
@@ -78,6 +79,7 @@ footer {
     inset: 0;
     z-index: 0;
     overflow: hidden;
+    container-type: inline-size;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
     mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
 }
@@ -86,7 +88,12 @@ footer {
     bottom: 0;
     left: 0;
     width: 200%;
-    height: 50%;
+    /* Lock each wave's box to its own viewBox aspect (--wv : 50) using a
+       width-relative unit, so preserveAspectRatio="none" scales uniformly and
+       the wave never squishes as the viewport narrows. 200cqw / (10000cqw/--wv)
+       == --wv/50 == the viewBox ratio. cqw (container width) is used instead of
+       vw so the locked 900px max-width is respected above that breakpoint. */
+    height: calc(10000cqw / var(--wv));
 }
 @keyframes w0 { to { transform: translateX(-0.05%); } }
 @keyframes w1 { to { transform: translateX(-0.15%); } }
